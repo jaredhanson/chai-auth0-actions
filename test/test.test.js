@@ -8,15 +8,21 @@ describe('Test', function() {
     expect(1).to.equal(1);
   })
   
-  describe('#postLogin', function() {
+  describe('#trigger', function() {
     
-    it('should invoke sync callback', function(done) {
+    it('should invoke with ', function(done) {
       chai.auth0.action({
         onExecutePostLogin: function(event, api) {
-          console.log('POST LOGIN!');
+          expect(event).to.be.an('object');
+          
+          expect(api.access).to.be.an('object');
+          expect(api.access.deny).to.be.a('function');
         }
       })
-      .trigger('post-login');
+      .trigger('post-login', function(api) {
+        expect(api.access).to.be.an('object');
+        done();
+      });
     }); // should invoke sync callback
     
     
