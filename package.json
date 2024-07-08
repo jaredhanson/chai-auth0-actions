@@ -2,9 +2,14 @@
   "name": "chai-auth0-actions",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./lib",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "make-node": "0.4.6",
+    "mocha": "^6.1.4",
+    "chai": "^4.2.0"
   },
   "author": "",
   "license": "ISC"
