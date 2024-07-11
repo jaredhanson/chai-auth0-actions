@@ -12,17 +12,19 @@ describe('Test', function() {
     
     it('should invoke with ', function(done) {
       chai.auth0.action({
-        onExecutePostLogin: function(event, api) {
+        onExecutePostLogin: async function(event, api) {
           expect(event).to.be.an('object');
           
           expect(api.access).to.be.an('object');
           expect(api.access.deny).to.be.a('function');
         }
       })
-      .trigger('post-login', function(api) {
+      .trigger('post-login')
+      .then(function(api) {
         expect(api.access).to.be.an('object');
         done();
-      });
+      })
+      .catch(done);
     }); // should invoke sync callback
     
     
